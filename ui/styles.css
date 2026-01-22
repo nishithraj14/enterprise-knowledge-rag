@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+  }
+  
+  .layout {
+    display: flex;
+    height: 100vh;
+    background: #f5f7fa;
+  }
+  
+  .sidebar {
+    width: 280px;
+    background: #0f172a;
+    color: white;
+    padding: 1rem;
+  }
+  
+  .sidebar h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.5rem;
+  }
+  
+  .mode {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .mode label {
+    display: block;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #cbd5e1;
+  }
+  
+  .sidebar li.active {
+    background: #2563eb;
+    color: white;
+  }
+  
+  .sidebar li:hover {
+    background: #1e293b;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  .card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+  
+  textarea {
+    width: 100%;
+    height: 120px;
+  }
+  
+  button {
+    margin-top: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  

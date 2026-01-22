@@ -1,0 +1,96 @@
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+.env/
+.env.*
+
+# ==============================
+# Environment & Secrets
+# ==============================
+.env
+.env.local
+.env.dev
+.env.prod
+
+# ==============================
+# OS / Editor junk
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
+
+# ==============================
+# Temporary / Runtime Files
+# ==============================
+*.tmp
+*.temp
+*.swp
+
+# ==============================
+# Uploaded / Ephemeral Documents
+# (Privacy-first: never commit user files)
+# ==============================
+uploads/
+tmp/
+temp/
+*.pdf
+*.docx
+*.doc
+*.html
+
+# EXCEPTION: allow demo resume ONLY
+!app/bootstrap/resume.pdf
+
+# ==============================
+# Vector Stores / Databases
+# ==============================
+chroma/
+chromadb/
+*.sqlite
+*.db
+
+# ==============================
+# Build / Distribution
+# ==============================
+build/
+dist/
+*.egg-info/
+
+# ==============================
+# Node / Frontend (if extended later)
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==============================
+# Test Artifacts
+# ==============================
+.coverage
+pytest_cache/
+
+# ==============================
+# Cache
+# ==============================
+.cache/
