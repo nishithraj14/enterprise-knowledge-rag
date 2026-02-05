@@ -1,27 +1,53 @@
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import router
-from app.bootstrap.preload import preload_resume
+import os
+from pathlib import Path
 
-app = FastAPI(
-    title="Enterprise Knowledge RAG System",
-    version="1.0.0"
-)
+from app.ingestion.loader import load_document
+from app.ingestion.cleaner import clean_text
+from app.ingestion.chunker import dynamic_chunk
+from app.embeddings.embedder import embed_chunks
+from app.storage.vector_store import vector_store
+from app.storage.document_registry import document_registry
+from app.observability.logger import log_ingestion
 
-# CORS (UI may be hosted separately later)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
-@app.on_event("startup")
-def startup():
-    preload_resume()
+def preload_resume():
 
-app.include_router(router)
+    print("🚀 PRELOAD STARTED")
 
-# Serve UI locally
-app.mount("/", StaticFiles(directory="ui", html=True), name="ui")
+    BASE_DIR = Path(__file__).resolve().parent
+    path = BASE_DIR / "resume.pdf"
+
+    print("📄 Resume path:", path)
+
+    if not path.exists():
+        print("❌ Resume not found")
+        return
+
+    text = load_document(str(path))
+
+    if not text:
+        print("❌ No text extracted")
+        return
+
+    clean = clean_text(text)
+    chunks = dynamic_chunk(clean)
+
+    print("✂️ Chunks:", len(chunks))
+
+    if not chunks:
+        print("❌ No chunks created")
+        return
+
+    embeddings = embed_chunks(chunks)
+
+    vector_store.add(
+        chunks=chunks,
+        embeddings=embeddings,
+        source="resume.pdf"
+    )
+
+    document_registry.add("resume.pdf")
+
+    log_ingestion("resume.pdf (preloaded)", len(chunks))
+
+    print("✅ Resume preloaded successfully")
