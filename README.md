@@ -1,312 +1,323 @@
 🏢 Enterprise Knowledge RAG System
-Privacy-First, Source-Aware Retrieval-Augmented Generation for Internal Knowledge
 
-A production-oriented Generative AI system that enables organizations to securely query internal documents using natural language, with strict grounding, source control, and enterprise-grade reliability.
+Privacy-First • Source-Aware • Enterprise-Grade Retrieval-Augmented Generation
 
-📌 Problem Statement
+🔗 Live Demo (Streamlit Showcase)
+https://enterprise-knowledge-rag-jmaweu6ea72ovnvhxhkouv.streamlit.app/
 
-Modern organizations suffer from a knowledge accessibility crisis, not a knowledge shortage.
+📌 Overview
 
-Enterprises generate massive volumes of internal documents:
+This project implements a production-oriented Enterprise Knowledge Assistant that enables organizations to securely query internal documents using natural language — with strict grounding, source attribution, and privacy-first ingestion.
+
+Unlike generic chatbot demos, this system is architected around real enterprise constraints:
+
+Sensitive internal knowledge
+
+Compliance requirements
+
+Multi-document retrieval
+
+Hallucination risk
+
+Source verification needs
+
+It is designed as a system design + GenAI architecture showcase, not just an LLM interface.
+
+🚨 Problem This Solves
+
+Modern enterprises don’t suffer from a lack of information — they suffer from inaccessible information.
+
+Critical knowledge lives inside:
 
 HR policies
 
-SOPs and operational manuals
+SOP manuals
 
-Compliance and audit documents
+Compliance documents
+
+Safety procedures
 
 Technical design docs
 
-Onboarding material
+Onboarding guides
 
-Internal wikis and PDFs
+Internal PDFs & DOCX files
 
-However, accessing the right information at the right time remains difficult.
+Traditional search systems fail because they:
 
-Core challenges:
+Rely on keyword matching
 
-Knowledge is scattered across PDFs, DOCX files, shared drives, and portals
+Return documents instead of answers
 
-Keyword search fails to capture semantic intent
+Ignore semantic intent
 
-Employees must manually scan long documents
+Provide no source traceability
 
-Sensitive information requires controlled access
-
-Search systems return documents, not answers
-
-Users cannot verify where an answer came from
-
-Business impact:
+Business Impact
 
 Lost productivity
 
-Repeated questions across teams
+Repeated internal queries
 
 Slow onboarding
 
-Increased operational risk
+Compliance risk
 
-Compliance exposure
+Knowledge silos
 
-🏢 Companies Actively Facing This Problem
+💡 Solution
 
-This problem exists across large enterprises and fast-scaling companies, including:
+This system enables employees to:
 
-Consulting firms with massive internal documentation (e.g., Infosys, TCS)
-
-Product companies with SOP-driven operations (e.g., Flipkart, Swiggy)
-
-Airlines and logistics firms with safety and compliance manuals (e.g., Air India)
-
-Enterprises with growing engineering and HR knowledge bases
-
-This project uses Air-India-style internal documents and real-world PDFs as a realistic reference domain.
-
-💡 Solution Overview
-
-This project implements a secure, enterprise-grade Retrieval-Augmented Generation (RAG) system that allows users to:
-
-Upload internal documents securely
+Upload enterprise documents securely
 
 Ask natural-language questions
 
-Receive factually grounded answers
+Retrieve grounded answers
 
-Control whether answers come from:
+Restrict search scope
 
-All available documents
+Verify sources behind every response
+
+It combines:
+
+Retrieval-Augmented Generation (RAG)
+
+Semantic search
+
+Source filtering
+
+Privacy-safe ingestion
+
+Enterprise observability
+
+🔥 Why This Project Stands Out
+1️⃣ Source-Scoped Querying
+
+Users can choose:
+
+All documents
 
 A specific selected document
 
-Verify answers using explicit source citations
+Prevents cross-document leakage — critical for enterprise privacy.
 
-Unlike generic chatbots, this system is:
+2️⃣ Strict Hallucination Control
 
-Strictly grounded in enterprise data
+The LLM is prompt-constrained to:
 
-Hallucination-resistant
+Use only retrieved context
 
-Source-aware
+Refuse insufficient data
 
-Privacy-first
+Avoid prior knowledge
 
-Designed for production, not demos
+This ensures audit-safe responses.
 
-🚀 Key Differentiating Features (What Makes This Stand Out)
-🔥 Enterprise-First Capabilities (Not Demo Features)
+3️⃣ Privacy-First Ingestion
 
-All-Documents vs Selected-Document Querying
+Files processed ephemerally
 
-Users explicitly choose query scope
+No raw storage
 
-Prevents accidental cross-document leakage
+No document persistence
 
-Strict Hallucination Control
+Secure temp handling
 
-Refuses to answer if data is insufficient
+Designed for sensitive corporate environments.
 
-No prior knowledge, no assumptions
+4️⃣ Multi-Document Semantic Retrieval
 
-Source-Aware Answers
+Simultaneous multi-file indexing
 
-Every response is traceable to documents
+Chunk-level embeddings
 
-Improves trust and auditability
+Metadata-aware filtering
 
-Privacy-First Ingestion
+No vector collisions
 
-Documents are processed ephemerally
+5️⃣ Source-Aware Answering
 
-No raw files are stored
+Every answer returns:
 
-Multi-Document Semantic Retrieval
+Document name
 
-Handles multiple PDFs and formats concurrently
+Chunk reference
 
-No vector overwrite or collision
+Enables verification, trust, and explainability.
 
-Enterprise-Style UI
+6️⃣ Enterprise-Style UI
+
+Includes:
 
 Sidebar document explorer
 
-Clear query scope controls
+Query scope selector
 
-Clean internal-tool UX
+Upload + retrieval workflow
 
-🧠 How the System Works (High-Level)
+Internal-tool UX design
 
-Documents (PDF, DOCX, HTML) are uploaded securely
+Built to resemble real corporate knowledge systems.
 
-Text is extracted and cleaned
-
-Content is dynamically chunked
-
-Semantic embeddings are generated
-
-Embeddings are stored in a vector database
-
-User query is embedded
-
-Relevant chunks are retrieved:
-
-From all documents or
-
-From a selected document only
-
-An LLM generates an answer strictly from retrieved context
-
-Sources are returned for verification
-
-🏗️ Architecture Overview
-Core Components
+🧠 Architecture Summary
 
 Ingestion Layer
 
-Multi-format loaders (PDF, DOCX, HTML)
+PDF / DOCX / HTML loaders
 
-Text cleaning and normalization
+Text cleaning
 
-Dynamic chunking strategy
+Dynamic token chunking
 
 Embedding Layer
 
-Separate embeddings for:
+Chunk embeddings
 
-Document chunks
-
-User queries
+Query embeddings
 
 Vector Storage
 
 ChromaDB
 
-Globally unique chunk IDs
+Source metadata
 
-Source metadata for filtering
+Unique chunk IDs
 
 Retrieval Layer
 
 Semantic similarity search
 
-Optional document-level filtering
+Optional source filtering
 
 Generation Layer
 
-Strict prompt constraints
+Strict prompt grounding
 
-Refusal logic for insufficient data
+Refusal logic
 
-Source-aware answer generation
+Source citation
 
 API Layer
 
 FastAPI backend
 
-JSON-based, production-style endpoints
+Production endpoints
 
 UI Layer
 
-Sidebar document registry
+Document sidebar
 
-Query scope selection (All vs Selected)
-
-Enterprise internal-tool design
+Query scope controls
 
 Observability
 
 Query logging
 
-Ingestion logging
+Ingestion logs
 
-Error logging
+Error tracking
 
-📂 Project Structure (High Level)
+📂 Project Structure (High-Level)
 app/
-├── api/            # FastAPI routes & schemas
-├── bootstrap/      # Resume preload logic
-├── embeddings/     # Query & chunk embeddings
-├── ingestion/      # Loaders, cleaners, chunkers
-├── retrieval/      # Semantic retrieval logic
-├── generation/     # LLM answer generation
-├── storage/        # Vector store & document registry
-├── observability/  # Logging
-├── security/       # Privacy-safe file handling
-├── main.py         # Application entry point
+├── api/
+├── bootstrap/
+├── embeddings/
+├── ingestion/
+├── retrieval/
+├── generation/
+├── storage/
+├── observability/
+├── security/
+├── main.py
 
 ui/
-├── index.html      # Enterprise UI
+├── index.html
 ├── styles.css
 └── app.js
 
-📈 Why This Matters (Business Value)
+streamlit_app.py   # Demo showcase layer
 
-This system enables organizations to:
+📈 Business Value
 
-Reduce time spent searching for information
+Organizations can:
 
-Provide consistent, accurate answers
+Reduce knowledge search time
 
-Improve onboarding speed
+Improve onboarding efficiency
 
-Reduce reliance on senior employees
+Standardize answers
 
-Improve compliance and audit readiness
+Reduce SME dependency
 
-Even small productivity gains compound massively at enterprise scale.
+Improve audit readiness
 
-▶️ How to Run Locally
-1️⃣ Setup environment
+Enable self-service knowledge access
+
+Even small efficiency gains scale massively across large teams.
+
+🧪 Deployment Modes
+Mode	Purpose
+FastAPI + UI	Full production architecture
+Streamlit	Recruiter demo showcase
+Local Vector DB	Offline testing
+▶️ Local Setup
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+venv\Scripts\activate
 
-2️⃣ Install dependencies
 pip install -r requirements.txt
 
-3️⃣ Set environment variables
-
-Create .env:
-
-OPENAI_API_KEY=your_api_key_here
-
-4️⃣ Start the server
 uvicorn app.main:app --reload
 
-5️⃣ Open the UI
+
+Open:
+
 http://localhost:8000
 
-✅ What This Project Explicitly Does NOT Do (By Design)
+🚫 Explicit Non-Goals
 
-No fine-tuning
+By design, this system does not include:
 
-No multi-tenant isolation
+Fine-tuning
 
-No real-time streaming
+Multi-tenant isolation
 
-No document persistence
+Streaming responses
 
-No automatic document updates
+Persistent document storage
 
-These are deliberate non-goals to keep the system focused, secure, and explainable.
+Auto document sync
+
+This keeps the system:
+
+Explainable
+
+Secure
+
+Deterministic
+
+Enterprise-auditable
 
 🏁 Final Note
 
-This project is not a toy RAG demo.
+This is not a basic RAG demo.
 
 It demonstrates:
 
-Real architectural tradeoffs
+Enterprise system design thinking
 
-Enterprise-level constraints
+Privacy-aware GenAI architecture
 
-Correct failure behavior
+Retrieval grounding strategies
 
-Production-grade thinking
+Failure-safe LLM orchestration
 
-It is suitable for:
+Production deployment readiness
 
-Portfolio showcase
+Suitable for:
 
-System design interviews
+GenAI Engineer portfolios
 
-Enterprise GenAI discussions
+AI System Design interviews
+
+Enterprise AI architecture discussions
