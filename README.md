@@ -5,6 +5,7 @@ Privacy-First • Source-Aware • Enterprise-Grade Retrieval-Augmented Generati
 🔗 Live Demo (Streamlit Showcase)
 https://enterprise-knowledge-rag-jmaweu6ea72ovnvhxhkouv.streamlit.app/
 
+![enterprise](https://github.com/user-attachments/assets/d3511ddf-a230-418a-9166-bb7b0aed45e7)
 
 
 📌 Overview
