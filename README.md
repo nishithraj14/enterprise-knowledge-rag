@@ -5,6 +5,9 @@ Privacy-First • Source-Aware • Enterprise-Grade Retrieval-Augmented Generati
 🔗 Live Demo (Streamlit Showcase)
 https://enterprise-knowledge-rag-jmaweu6ea72ovnvhxhkouv.streamlit.app/
 
+![enterprise knowledge gif](https://github.com/user-attachments/assets/17308c6b-20ac-44cc-a024-f552bb4dbb69)
+
+
 📌 Overview
 
 This project implements a production-oriented Enterprise Knowledge Assistant that enables organizations to securely query internal documents using natural language — with strict grounding, source attribution, and privacy-first ingestion.
